@@ -1,0 +1,25 @@
+# General Root
+target/
+.DS_Store
+.sops.yaml
+.gitignore.swp
+.ruff_cache
+
+# Decrypted secrets — never commit
+keys/
+*.dec
+*.key
+
+# Local data
+data/
+training/
+target/
+decisions/
+.DS_Store
+.git
+
+
+# Agentic files
+AGENTS.md
+CLAUDE.md
+CLAUDE-informational.md
