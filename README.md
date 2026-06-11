@@ -19,7 +19,6 @@ Per-source ring buffers (~1 MB total, pre-allocated)
 Kernel (hot path)              Flusher → SQLite → WS Relay → Archive
 ```
 
-The ring buffer is the source of truth. SQLite is the cold archive.
 The kernel reads rings directly; no SQLite in the hot path.
 
 ### Data sources
