@@ -27,7 +27,7 @@ use std::collections::HashSet;
 const GAMMA_API: &str = "https://gamma-api.polymarket.com";
 
 /// User-Agent matching the Python client.
-const USER_AGENT: &str = "mantis-beacon/0.3";
+const USER_AGENT: &str = "mantis/0.3";
 
 const MONTH_NAMES: &[&str] = &[
     "january",
