@@ -218,7 +218,7 @@ pub fn phi_pdf(x: f64) -> f64 {
 
 /// d1 displacement: `ln(S/K) / (σ√T)`
 ///
-/// Measures distance from fair value through the 1/√T lens (Kyle 1985, R²=0.97).
+/// Measures distance from fair value through the 1/√T lens (R²=0.97).
 /// Returns 0.0 on degenerate inputs (T≤0, σ≤0, K≤0, S≤0) or non-finite inputs.
 #[inline(always)]
 pub fn d1(spot: f64, strike: f64, sigma_1s: f64, t_secs: f64) -> f64 {
