@@ -5,10 +5,10 @@ use std::time::Duration;
 use tokio::sync::mpsc;
 use tokio_util::sync::CancellationToken;
 
-use mantis_hybrid::book::{self, BookEvent, BOOK_CHANNEL_CAP};
-use mantis_hybrid::db::{self, ResolutionRow};
-use mantis_hybrid::debug;
-use mantis_hybrid::feed::{
+use mantis::book::{self, BookEvent, BOOK_CHANNEL_CAP};
+use mantis::db::{self, ResolutionRow};
+use mantis::debug;
+use mantis::feed::{
     self, Feed, FeedRow, LiveState,
     binance::BinanceFeed,
     brti::BrtiFeed,
@@ -19,15 +19,15 @@ use mantis_hybrid::feed::{
     polymarket_ws::PolymarketWsFeed,
     rtds::RtdsFeed,
 };
-use mantis_hybrid::ring::RingSet;
-use mantis_hybrid::venue::VenueClient;
-use mantis_hybrid::venue::kalshi::{
+use mantis::ring::RingSet;
+use mantis::venue::VenueClient;
+use mantis::venue::kalshi::{
     KalshiClient, check_resolution as kalshi_check_resolution,
 };
-use mantis_hybrid::venue::polymarket::{
+use mantis::venue::polymarket::{
     PolymarketClient, check_resolution as poly_check_resolution,
 };
-use mantis_hybrid::ws_relay;
+use mantis::ws_relay;
 
 // ---------------------------------------------------------------------------
 // Feed flusher — drains ring buffers to local SQLite
@@ -142,7 +142,7 @@ async fn sigma_updater(
         }
 
         let spot = state.binance_price.load();
-        if let Some(sigma) = mantis_hybrid::feed::deribit::fetch_sigma(&http, spot, &rings).await {
+        if let Some(sigma) = mantis::feed::deribit::fetch_sigma(&http, spot, &rings).await {
             state.sigma_1s.store(sigma);
             state.sigma_ts.store(feed::wall_clock());
             eprintln!("[sigma] sigma_1s = {sigma:.2e}  (spot=${spot:.0})");
@@ -540,7 +540,7 @@ async fn main() {
 
     if initial_spot > 0.0 {
         if let Some(sigma) =
-            mantis_hybrid::feed::deribit::fetch_sigma(&http_init, initial_spot, &rings).await
+            mantis::feed::deribit::fetch_sigma(&http_init, initial_spot, &rings).await
         {
             state.sigma_1s.store(sigma);
             state.sigma_ts.store(feed::wall_clock());
