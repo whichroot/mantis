@@ -1,21 +1,6 @@
 //! Encrypted WebSocket relay — ships feed data to mantis-archive.
 //!
-//! Topology: hybrid → CF Worker (WSS) → archive (TimescaleDB).
-//! CF Worker is an auth gateway — it verifies the HMAC handshake then
 //! passes encrypted frames through opaque. The archive decrypts.
-//!
-//! Protocol:
-//! 1. WSS connect to CF Worker.
-//! 2. Server sends 32-byte random nonce.
-//! 3. Client sends HMAC-SHA256(shared_secret, nonce).
-//! 4. Server verifies. Connection authenticated.
-//! 5. Both derive session_key = HKDF-SHA256(shared_secret, nonce, "mantis-ws-v1").
-//! 6. All subsequent frames: 12-byte GCM nonce ‖ ciphertext ‖ 16-byte tag.
-//!    Plaintext = JSON row.
-//!
-//! The relay reads from local SQLite (the primary store), encrypts, and
-//! sends. On disconnect, it reconnects with backoff. Collection is never
-//! blocked by the relay.
 
 use std::sync::Arc;
 
