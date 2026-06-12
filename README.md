@@ -83,14 +83,6 @@ feed/
 venue/
   kalshi.rs        Kalshi discovery, resolution, book parsing
   polymarket.rs    Polymarket discovery, resolution, book parsing
-keys/
-  encrypted/       SOPS-encrypted credentials
-    kalshiid.enc   Kalshi API key ID
-    bcn-read.enc   Kalshi RSA private key
-    ws-auth.enc    WS relay shared secret
-  age-key.txt      age decryption key
-training/          Python training pipeline
-data/              Local SQLite database
 ```
 
 ## Prerequisites
@@ -236,8 +228,8 @@ Progress is printed to stderr every 30 seconds.
 - **No derived values stored** -- everything computable is computed at point of use.
 - **NaN firewall** at every boundary. No module trusts upstream.
 - **WS-first, REST fallback** -- never fabricate data.
-- **The system has paper trading only (debug.rs), not live execution. No HTTP calls to any venue API.
-- **To actually execute orders on Polymarket you would need:
+- **The system has paper trading only (debug.rs), not live execution.** No HTTP calls to any venue API.
+- **To actually execute orders on Polymarket you would need:**
     - Polymarket CLOB API keys (API key, API secret, API passphrase)
     - An Ethereum wallet with USDC on Polygon for signing and funding orders
     - The CLOB order endpoint (POST https://clob.polymarket.com/order) which requires HMAC-signed requests
