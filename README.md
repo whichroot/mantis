@@ -7,6 +7,8 @@ on Kalshi and Polymarket up/down binaries.
 
 A policy network trained on a tensor is separate architecture and required to provide RiskConfig weights.
 
+**THIS REPOSITORY IS INCOMPLETE BY NATURE. PAPER TRADING IS ONLY POSSIBLE. POLICY NETWORK NOT INCLUDED w/ WEIGHTS. KEYS ARE REMOVED. POLYMARKET WALLET INTEGRATION NOT CONFIGURED**
+
 ## Architecture
 
 ```
