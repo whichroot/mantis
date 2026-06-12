@@ -2,25 +2,6 @@
 //!
 //! Standalone async function called every 300s by the sigma updater.
 //! NOT a Feed trait implementation — called directly by the snapshot loop.
-//!
-//! Ported from `_fetch_sigma` in scripts/collect.py.
-//!
-//! # Algorithm
-//!
-//! 1. GET `https://www.deribit.com/api/v2/public/get_book_summary_by_currency?currency=BTC&kind=option`
-//! 2. Filter to call options only (instrument_name ends with "-C").
-//! 3. Parse instrument name: `BTC-(\d{1,2})([A-Z]{3})(\d{2})-(\d+)-(C|P)`
-//! 4. Expiry is always at 08:00 UTC. t_secs must be >= 300.
-//! 5. Sort by (t_secs ASC, moneyness ASC). Select nearest-expiry ATM cluster.
-//! 6. Cluster: all options where |t - best.t| < 60 AND moneyness < 0.03.
-//! 7. Compute two sigma values:
-//!    a. `deribit_iv` (smoothed): average mark_iv across cluster → kernel's
-//!    `implied_vol_to_sigma_1s`.
-//!    b. `deribit_iv_computed`: bisection on each cluster option to recover IV
-//!    from mark_price_btc * spot. Average valid results.
-//! 8. Return `Some(sigma_1s_computed)` — back-computed preferred.
-//!    Fallback to `Some(sigma_1s_deribit)` if bisection fails entirely.
-//! 9. Emit two FeedRows: "deribit_iv" and "deribit_iv_computed".
 
 use crate::kernel::math::{SECS_PER_YEAR, bs_call_price, implied_vol_to_sigma_1s};
 
