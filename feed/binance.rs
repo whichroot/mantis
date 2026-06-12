@@ -1,11 +1,4 @@
 //! Binance aggTrade WebSocket — authoritative BTC/USDT spot price.
-//!
-//! Edge cases from collect.py:
-//! - No subscribe needed — data flows on connect
-//! - Price field `p` is a STRING, not a number
-//! - Timestamp from `T` (trade time ms), NOT `E` (event time)
-//! - recv timeout 30s — silent continue, not an error
-//! - Reconnect: 2s base, 2x backoff, cap 30s
 
 use std::sync::Arc;
 use std::sync::atomic::Ordering;
