@@ -2,7 +2,7 @@
 
 Live data collector and encrypted relay for BTC binary prediction markets.
 Ingests real-time feeds from 19 sources across 8 WebSocket connections,
-computes the Omega scalar field, and evaluates whether money can be made
+computes a scalar field, and evaluates whether money can be made
 on Kalshi and Polymarket up/down binaries.
 
 A policy network trained on a tensor is separate architecture and required to provide RiskConfig weights.
