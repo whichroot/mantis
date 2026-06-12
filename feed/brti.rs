@@ -1,6 +1,6 @@
 //! BrtiFeed — CF Benchmarks BRTI WebSocket feed.
 //!
-//! Edge cases from collect.py:
+//! Edge cases:
 //! - URL: wss://www.cfbenchmarks.com/ws/v4
 //! - Requires 3 subprotocols: cfb, cfbenchmarksws2, e3709a02-9876-45ea-ac46-e9020e06d7c6
 //! - Must send subscribe message after connect: {"type":"subscribe","id":"BRTI","stream":"value"}
