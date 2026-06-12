@@ -1,7 +1,6 @@
-//! 23 parameter-free physics formulas. f64 → f64.
+//! 23 parameter-free formulas. f64 → f64.
 //!
 //! Zero free parameters. Zero domain types. Zero I/O. Zero state.
-//! The physics computes itself from observables.
 
 use core::f64::consts::{FRAC_1_SQRT_2, FRAC_2_SQRT_PI};
 
