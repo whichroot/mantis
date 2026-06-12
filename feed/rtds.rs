@@ -4,7 +4,7 @@
 //! service.  This is the exact feed Polymarket uses for up/down market
 //! resolution, so these values are ground-truth for Polymarket oracle behaviour.
 //!
-//! Edge cases from collect.py:
+//! Edge cases:
 //! - URL: wss://ws-live-data.polymarket.com
 //! - No subprotocols, no auth headers
 //! - Library pings DISABLED — must send literal string `"ping"` every 5 seconds
