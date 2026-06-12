@@ -25,8 +25,8 @@ const KALSHI_API: &str = "https://api.elections.kalshi.com/trade-api/v2";
 
 const KALSHI_SERIES: &[&str] = &["KXBTC15M", "KXBTCD", "KXBTC", "BTCD"];
 
-/// User-Agent matching the Python client (and the collect.py strings() guard).
-const USER_AGENT: &str = "mantis-beacon/0.3";
+/// User-Agent
+const USER_AGENT: &str = "mantis/0.3";
 
 // ---------------------------------------------------------------------------
 // Client
