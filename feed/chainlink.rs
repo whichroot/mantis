@@ -3,7 +3,7 @@
 //! Polls the Chainlink dashboard API every 2 seconds. This is an HTTP feed,
 //! NOT a WebSocket. Uses `reqwest::Client` with a persistent connection pool.
 //!
-//! Edge cases from collect.py:
+//! Edge cases:
 //! - URL: https://data.chain.link/api/live-data-engine-stream-data?feedId=...
 //! - Method: GET, headers: User-Agent: "mantis-beacon/0.3", timeout: 8s
 //! - Poll interval: 2 seconds
