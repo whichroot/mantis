@@ -204,7 +204,7 @@ SOPS decryption and skips files that are already set.
 cargo test && cargo clippy
 ```
 
-559 tests must pass with zero warnings before every commit.
+559 tests must pass with zero warnings before every commit. **NOTE** that 559 tests is not accurate due to missing program components.
 
 ## Running
 
