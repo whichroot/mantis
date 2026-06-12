@@ -7,7 +7,7 @@ on Kalshi and Polymarket up/down binaries.
 
 A policy network trained on a tensor is separate architecture and required to provide RiskConfig weights.
 
-**THIS REPOSITORY IS INCOMPLETE BY NATURE. PAPER TRADING IS ONLY POSSIBLE. POLICY NETWORK NOT INCLUDED w/ WEIGHTS. KEYS ARE REMOVED. POLYMARKET WALLET INTEGRATION NOT CONFIGURED**
+**THIS REPOSITORY IS INCOMPLETE BY NATURE. PAPER TRADING IS ONLY POSSIBLE. POLICY NETWORK NOT INCLUDED w/ WEIGHTS. KEYS ARE REMOVED. POLYMARKET WALLET INTEGRATION NOT CONFIGURED.**
 
 ## Architecture
 
@@ -222,16 +222,10 @@ The system performs NTP sync, decrypts credentials, initializes SQLite,
 starts all feed WebSocket connections, and begins collecting data.
 Progress is printed to stderr every 30 seconds.
 
-## Design constraints
-
-- **Rust only** (except `training/` which is Python).
-- **rusqlite only** -- no external database drivers.
-- **Data leaves via encrypted WebSocket only** -- no direct external DB writes.
-- **No derived values stored** -- everything computable is computed at point of use.
-- **NaN firewall** at every boundary. No module trusts upstream.
-- **WS-first, REST fallback** -- never fabricate data.
+## Notes
 - **The system has paper trading only (debug.rs), not live execution.** No HTTP calls to any venue API.
 - **To actually execute orders on Polymarket you would need:**
     - Polymarket CLOB API keys (API key, API secret, API passphrase)
     - An Ethereum wallet with USDC on Polygon for signing and funding orders
     - The CLOB order endpoint (POST https://clob.polymarket.com/order) which requires HMAC-signed requests
+- GPL Licensed. Author claims no warranty or liability for software used.
